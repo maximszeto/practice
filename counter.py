@@ -32,3 +32,9 @@ def calculate(text):
         print(f"There are {letterE} e's in that text")
 
 calculate(userInput)
+
+def main():
+    for i in range(21):
+        print(f"{i}.")
+
+main()

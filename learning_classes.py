@@ -19,9 +19,11 @@ class Arithmetic:
         self.num1 = num1
         self.num2 = num2
 
-    def add(self, num1, num2):
-        print(num1 + num2)  
+
+    def add(self):
+        self.num1 = self.num1 ** 2
+        print(self.num1 + self.num2)  
 
 
-answer = Arithmetic(8,9)
-answer.add(9,8)
+answer = Arithmetic(4,2)
+answer.add()

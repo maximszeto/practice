@@ -19,6 +19,8 @@ class Arithmetic:
         self.num1 = num1
         self.num2 = num2
 
+    def __eq__(self, other):
+        return self.num1 == other.num1 and self.num2 == other.num2
 
     def add(self):
         self.num1 = self.num1 ** 2
@@ -26,4 +28,12 @@ class Arithmetic:
 
 
 answer = Arithmetic(4,2)
-answer.add()
+answer2 = Arithmetic(4,12)
+
+if answer == answer2:
+    print("same")
+else:
+    print("false")
+
+
+    

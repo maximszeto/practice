@@ -22,6 +22,10 @@ class Arithmetic:
     def __eq__(self, other):
         return self.num1 == other.num1 and self.num2 == other.num2
 
+    def __str__(self):
+        sum = self.num1 + self.num2
+        return f"{self.num1} + {self.num2} = {sum}"
+
     def add(self):
         self.num1 = self.num1 ** 2
         print(self.num1 + self.num2)  
@@ -30,10 +34,13 @@ class Arithmetic:
 answer = Arithmetic(4,2)
 answer2 = Arithmetic(4,12)
 
+print(answer)
+print(answer2)
+"""
 if answer == answer2:
     print("same")
 else:
     print("false")
-
+"""
 
     

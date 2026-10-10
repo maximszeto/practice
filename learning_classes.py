@@ -1,9 +1,9 @@
+"""
 class Jump:
     def __init__(self, height, time, date,):
         self.height = height
         self.time = time
         self.date = date
-"""
 JumpHeight = input("How high did you jump?: ")
 JumpTime = input("When did this jump happen?: ")
 JumpDate = input("What day did this jump occur on?: ")
@@ -12,7 +12,6 @@ JumpDate = input("What day did this jump occur on?: ")
 jump1 = Jump(JumpHeight, JumpTime, JumpDate)
 
 print(f"You jumped {jump1.height} at {jump1.time} olock on {jump1.date}")
-"""
 
 class Arithmetic:
     def __init__(self, num1, num2, sign):
@@ -55,16 +54,36 @@ class Arithmetic:
     def divide(self):
         return self.num1 / self.num2
 
-answer = Arithmetic(4,2, "-")
-answer2 = Arithmetic(4,12, "*")
+answer = Arithmetic(4,2, "+")
+answer2 = Arithmetic(1,5, "+")
 
 print(answer)
 print(answer2)
-"""
+
 if answer == answer2:
     print("same")
 else:
     print("false")
 """
+"""
+import pet
 
-    
+# Here, we create an instance (an object) of the Pet class
+my_dog = pet.Pet("Douglass", "Dog")
+my_cat = pet.Pet("Mr. Pickles", "cat")
+
+# Let's print out its attributes
+print(f"My pet's name is {my_dog.name} and he is a {my_dog.species}.")
+print(f"Starting energy: {my_dog.energy}")
+print(f"My cat's name is {my_cat.name} and he is a {my_cat.species}")
+print(f"Starting energy: {my_cat.energy}")
+# Make the pet do something
+for i in range(10):
+    my_dog.feed()
+
+for i in range(4):
+    my_cat.feed()
+
+"""
+
+import someClasses

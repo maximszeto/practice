@@ -33,14 +33,14 @@ class Library:
             if book.title == book_title and book.is_checked_out == False:
                 book.is_checked_out = True
                 print(f"You successfully checked out {book.title}")
-
+                return
         
             elif book.title == book_title and book.is_checked_out == True:
                 print(f"Sorry but {book.title} is already checked out")
+                return
 
-        if book_title not in self.books:
-            print(f"Sorry but we could not find {book.title} in our library")        
-
+        print(f"Sorry but we do not seem to have that book in our library")   
+                
         
         
 
@@ -67,10 +67,6 @@ lib.add_book(book1)
 lib.add_book(book2)
 
 lib.show_books()
-lib.check_out("BEN")
 
-"""
-lib.check_out(book1.title)
 lib.check_out(book2.title)
-lib.check_out("Book")
-"""
+lib.check_out(book2.title)

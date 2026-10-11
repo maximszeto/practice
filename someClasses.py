@@ -1,3 +1,8 @@
+import os
+
+os.system("clear")
+
+
 class Book:
     def __init__(self, title, author):
         self.title = title
@@ -27,11 +32,24 @@ class Library:
         for book in self.books:
             if book.title == book_title and book.is_checked_out == False:
                 book.is_checked_out = True
+                print(f"You successfully checked out {book.title}")
+
+        
+            elif book.title == book_title and book.is_checked_out == True:
+                print(f"Sorry but {book.title} is already checked out")
+
+        if book_title not in self.books:
+            print(f"Sorry but we could not find {book.title} in our library")        
+
+        
+        
 
     def return_book(self, book_title):
         for book in self.books:
             if book.title == book_title and book.is_checked_out == True:
                 book.is_checked_out = False
+                print(f"You returned the book {book.title}")
+
 
     def sort_books(self, author):
         print(f"Books with the Author {author}:") 
@@ -48,8 +66,11 @@ lib = Library()
 lib.add_book(book1)
 lib.add_book(book2)
 
+lib.show_books()
+lib.check_out("BEN")
+
+"""
 lib.check_out(book1.title)
 lib.check_out(book2.title)
-
-
-lib.sort_books("Brandon Sanderson")
+lib.check_out("Book")
+"""

@@ -26,11 +26,12 @@ class Library:
         self.books.append(book_object)
         
 
-    def check_out(self, book_title):
+    def check_out(self, book_title, patron_obj):
         # TODO: Look through self.books. If a book matches the title 
         # and isn't checked out, change its is_checked_out to True.
         for book in self.books:
             if book.title == book_title and book.is_checked_out == False:
+                patron_obj.borrowed_books.append(book_title)
                 book.is_checked_out = True
                 print(f"You successfully checked out {book.title}")
                 return
@@ -57,9 +58,23 @@ class Library:
             if book.author == author:
                 print(f"{book}") 
 
+
+class Patron:
+    def __init__(self, name):
+        self.name = name
+        self.borrowed_books = []
+
+    def display_books(self):
+        print(f"Here are the books that you checked out {self.name}")
+        for book in self.borrowed_books:
+            print(f"- {book}")
+
+
 book1 = Book("Words of Radiance", "Brandon Sanderson")
 book2 = Book("Oathbringer", "Brandon Sanderson")
+maxim = Patron("Maxim")
 
+maxim.borrowed_books.append("Wind and Truth")
 
 lib = Library()
 
@@ -68,5 +83,7 @@ lib.add_book(book2)
 
 lib.show_books()
 
-lib.check_out(book2.title)
-lib.check_out(book2.title)
+lib.check_out(book2.title, maxim)
+lib.check_out(book2.title, maxim)
+
+maxim.display_books()

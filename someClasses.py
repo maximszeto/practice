@@ -45,12 +45,17 @@ class Library:
         
         
 
-    def return_book(self, book_title):
+    def return_book(self, book_title, patron_obj):
         for book in self.books:
             if book.title == book_title and book.is_checked_out == True:
                 book.is_checked_out = False
+                patron_obj.borrowed_books.remove(book_title)
                 print(f"You returned the book {book.title}")
+                return
 
+            elif book.title == book_title and book.is_checked_out == False:
+                print(f"You dont have {book_title} even checked out")
+                return
 
     def sort_books(self, author):
         print(f"Books with the Author {author}:") 
@@ -70,11 +75,14 @@ class Patron:
             print(f"- {book}")
 
 
-book1 = Book("Words of Radiance", "Brandon Sanderson")
-book2 = Book("Oathbringer", "Brandon Sanderson")
-maxim = Patron("Maxim")
+book1 = Book("Way of Kings", "Brandon Sanderson")
+book2 = Book("Words of Radiance", "Brandon Sanderson")
+book3 = Book("Oathbringer", "Brandon Sanderson")
+book4 = Book("Rythmn of War", "Brandon Sanderson")
+book5 = Book("Wind and Truth", "Brandon Sanderson")
 
-maxim.borrowed_books.append("Wind and Truth")
+
+maxim = Patron("Maxim")
 
 lib = Library()
 
@@ -83,7 +91,10 @@ lib.add_book(book2)
 
 lib.show_books()
 
+lib.check_out(book1.title, maxim)
 lib.check_out(book2.title, maxim)
+lib.check_out(book2.title, maxim)
+lib.return_book(book2.title, maxim)
 lib.check_out(book2.title, maxim)
 
 maxim.display_books()

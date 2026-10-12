@@ -31,6 +31,9 @@ class Library:
         # and isn't checked out, change its is_checked_out to True.
         for book in self.books:
             if book.title == book_title and book.is_checked_out == False:
+                if len(patron_obj.borrowed_books) >= 2:
+                    print("Sorry but you have checked out your maximum amount of books")
+                    return
                 patron_obj.borrowed_books.append(book_title)
                 book.is_checked_out = True
                 print(f"You successfully checked out {book.title}")
@@ -88,13 +91,15 @@ lib = Library()
 
 lib.add_book(book1)
 lib.add_book(book2)
+lib.add_book(book3)
+lib.add_book(book4)
 
-lib.show_books()
+#lib.show_books()
 
 lib.check_out(book1.title, maxim)
-lib.check_out(book2.title, maxim)
-lib.check_out(book2.title, maxim)
-lib.return_book(book2.title, maxim)
-lib.check_out(book2.title, maxim)
+lib.check_out(book4.title, maxim)
+lib.check_out(book3.title, maxim)
+lib.check_out(book4.title, maxim)
+
 
 maxim.display_books()

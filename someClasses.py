@@ -31,9 +31,10 @@ class Library:
         # and isn't checked out, change its is_checked_out to True.
         for book in self.books:
             if book.title == book_title and book.is_checked_out == False:
-                if len(patron_obj.borrowed_books) >= 2:
+                if len(patron_obj.borrowed_books) >= 10:
                     print("Sorry but you have checked out your maximum amount of books")
                     return
+                patron_obj.reading_hisotry.append(book_title)
                 patron_obj.borrowed_books.append(book_title)
                 book.is_checked_out = True
                 print(f"You successfully checked out {book.title}")
@@ -71,10 +72,16 @@ class Patron:
     def __init__(self, name):
         self.name = name
         self.borrowed_books = []
+        self.reading_hisotry = []
 
     def display_books(self):
         print(f"Here are the books that you checked out {self.name}")
         for book in self.borrowed_books:
+            print(f"- {book}")
+
+    def display_reading_history(self):
+        print("Here are all your books that you have read at our library:")
+        for book in self.reading_hisotry:
             print(f"- {book}")
 
 
@@ -93,13 +100,16 @@ lib.add_book(book1)
 lib.add_book(book2)
 lib.add_book(book3)
 lib.add_book(book4)
+lib.add_book(book5)
 
 #lib.show_books()
 
 lib.check_out(book1.title, maxim)
-lib.check_out(book4.title, maxim)
+lib.check_out(book2.title, maxim)
 lib.check_out(book3.title, maxim)
 lib.check_out(book4.title, maxim)
-
+lib.check_out(book5.title, maxim)
+lib.return_book(book3.title, maxim)
 
 maxim.display_books()
+maxim.display_reading_history()

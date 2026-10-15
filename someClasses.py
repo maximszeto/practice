@@ -48,11 +48,11 @@ class Library:
                 patron_obj.reading_history.append(book_obj)
                 patron_obj.borrowed_books.append(book_obj)
                 each_book.is_checked_out = True
-                print(f"You successfully checked out {book_obj.title}")
+                print(f"{patron_obj.name} successfully checked out {book_obj.title}")
                 return
         
-            elif each_book.title == book_obj.title and book.is_checked_out == True:
-                print(f"Sorry but {book.title} is already checked out")
+            elif each_book.title == book_obj.title and each_book.is_checked_out == True:
+                print(f"Sorry but {each_book.title} is already checked out")
                 return
 
         print(f"Sorry but we do not seem to have that book in our library")   
@@ -65,11 +65,11 @@ class Library:
             if each_book.title == book_obj.title and each_book.is_checked_out == True:
                 each_book.is_checked_out = False
                 patron_obj.borrowed_books.remove(book_obj)
-                print(f"You returned the book {each_book.title}")
+                print(f"{patron_obj.name} returned the book {each_book.title}")
                 return
 
             elif each_book.title == book_obj.title and each_book.is_checked_out == False:
-                print(f"You dont have {each_book.title} even checked out")
+                print(f"{patron_obj.name} dont have {each_book.title} even checked out")
                 return
 
     def sort_books(self, author):
@@ -116,9 +116,10 @@ lib.add_book(book5)
 
 #lib.show_books()
 
-#lib.check_out(book2, ben)
+lib.check_out(book2, ben)
+
 lib.check_out(book1, maxim)
-ib.check_out(book2, maxim)
+lib.check_out(book2, maxim)
 lib.check_out(book3, maxim)
 lib.check_out(book4, maxim)
 lib.check_out(book5, maxim)

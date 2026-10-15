@@ -13,8 +13,8 @@ class Book:
         return f"{self.title}"
     
 class Library:
-    def __init__(self):
-        # This will hold a collection of Book objects
+    def __init__(self, name):
+        self.name = name
         self.books = [] 
         self.patrons = []
     
@@ -106,7 +106,7 @@ book5 = Book("Wind and Truth", "Brandon Sanderson")
 maxim = Patron("Maxim")
 ben = Patron("Ben")
 
-lib = Library()
+lib = Library("Tokyo Library")
 
 lib.add_book(book1)
 lib.add_book(book2)

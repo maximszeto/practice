@@ -8,6 +8,7 @@ class Book:
         self.title = title
         self.author = author
         self.is_checked_out = False  # Books start out available!
+        self.quantity = 0
     
     def __str__(self):
         return f"{self.title}"
@@ -19,8 +20,9 @@ class Library:
         self.patrons = []
     
     def show_books(self):
+        print(f"\nBooks in the {self.name}")
         for book in self.books:
-            print(book)
+            print(f"{book} has {book.quantity} copies avaliable")
 
     def show_patrons(self):
         print("\nPatrons:")
@@ -30,7 +32,7 @@ class Library:
     def add_book(self, book_object):
         # TODO: Append the book_object to the self.books list
         self.books.append(book_object)
-        
+        book_object.quantity += 1 
 
     def check_out(self, book_obj, patron_obj):
         # TODO: Look through self.books. If a book matches the title 
@@ -41,18 +43,19 @@ class Library:
             pass
 
         for each_book in self.books:
-            if each_book.title == book_obj.title and each_book.is_checked_out == False:
+            if each_book.title == book_obj.title and each_book.is_checked_out == False and each_book.quantity > 0:
                 if len(patron_obj.borrowed_books) >= 10:
                     print("Sorry but you have checked out your maximum amount of books")
                     return
                 patron_obj.reading_history.append(book_obj)
                 patron_obj.borrowed_books.append(book_obj)
                 each_book.is_checked_out = True
-                print(f"{patron_obj.name} successfully checked out {book_obj.title}")
+                print(f"\n{patron_obj.name} successfully checked out {book_obj.title}")
+                each_book.quantity -= 1
                 return
         
             elif each_book.title == book_obj.title and each_book.is_checked_out == True:
-                print(f"Sorry but {each_book.title} is already checked out")
+                print(f"\nSorry but {each_book.title} is already checked out")
                 return
 
         print(f"Sorry but we do not seem to have that book in our library")   
@@ -66,6 +69,7 @@ class Library:
                 each_book.is_checked_out = False
                 patron_obj.borrowed_books.remove(book_obj)
                 print(f"{patron_obj.name} returned the book {each_book.title}")
+                each_book.quantity += 1
                 return
 
             elif each_book.title == book_obj.title and each_book.is_checked_out == False:
@@ -114,7 +118,7 @@ lib.add_book(book3)
 lib.add_book(book4)
 lib.add_book(book5)
 
-#lib.show_books()
+lib.show_books()
 
 lib.check_out(book2, ben)
 
@@ -124,6 +128,8 @@ lib.check_out(book3, maxim)
 lib.check_out(book4, maxim)
 lib.check_out(book5, maxim)
 lib.return_book(book3, maxim)
+
+lib.show_books()
 
 maxim.display_books()
 maxim.display_reading_history()

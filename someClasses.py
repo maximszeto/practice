@@ -16,10 +16,16 @@ class Library:
     def __init__(self):
         # This will hold a collection of Book objects
         self.books = [] 
+        self.patrons = []
     
     def show_books(self):
         for book in self.books:
             print(book)
+
+    def show_patrons(self):
+        print("\nPatrons:")
+        for patron in self.patrons:
+            print(f"- {patron.name}")
 
     def add_book(self, book_object):
         # TODO: Append the book_object to the self.books list
@@ -29,6 +35,11 @@ class Library:
     def check_out(self, book_obj, patron_obj):
         # TODO: Look through self.books. If a book matches the title 
         # and isn't checked out, change its is_checked_out to True.
+        if patron_obj not in self.patrons:
+            self.patrons.append(patron_obj)
+        else:
+            pass
+
         for each_book in self.books:
             if each_book.title == book_obj.title and each_book.is_checked_out == False:
                 if len(patron_obj.borrowed_books) >= 10:
@@ -93,6 +104,7 @@ book5 = Book("Wind and Truth", "Brandon Sanderson")
 
 
 maxim = Patron("Maxim")
+ben = Patron("Ben")
 
 lib = Library()
 
@@ -104,8 +116,9 @@ lib.add_book(book5)
 
 #lib.show_books()
 
+#lib.check_out(book2, ben)
 lib.check_out(book1, maxim)
-lib.check_out(book2, maxim)
+ib.check_out(book2, maxim)
 lib.check_out(book3, maxim)
 lib.check_out(book4, maxim)
 lib.check_out(book5, maxim)
@@ -113,3 +126,4 @@ lib.return_book(book3, maxim)
 
 maxim.display_books()
 maxim.display_reading_history()
+lib.show_patrons()

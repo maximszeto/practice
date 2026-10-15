@@ -86,12 +86,12 @@ class Patron:
         self.reading_history = []
 
     def display_books(self):
-        print(f"\nHere are the books that you checked out {self.name}")
+        print(f"\nHere are the books that {self.name} has checked out")
         for book in self.borrowed_books:
             print(f"- {book}")
 
     def display_reading_history(self):
-        print("\nHere are all your books that you have read at our library:")
+        print(f"\nHere are all your books that {self.name} has read at our library:")
         for book in self.reading_history:
             print(f"- {book}")
 

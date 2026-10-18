@@ -113,6 +113,7 @@ class Patron:
 # TEST SCRIPT FOR CRITICAL LOGIC & BUG FIXES
 # ==========================================
 
+"""
 # 1. Setup the Library
 lib = Library("Test Library")
 
@@ -161,44 +162,24 @@ alice.display_books()
 
 bob.display_books()
 # EXPECTED: Should be empty (or show nothing) because he returned his book.
-
-
-
 """
 
-book1 = Book("Way of Kings", "Brandon Sanderson")
-book2 = Book("Words of Radiance", "Brandon Sanderson")
-book3 = Book("Oathbringer", "Brandon Sanderson")
-book4 = Book("Rythmn of War", "Brandon Sanderson")
-book5 = Book("Wind and Truth", "Brandon Sanderson")
 
+def main():
 
-maxim = Patron("Maxim")
-ben = Patron("Ben")
+    library_name = input("Welcome! What will this library be called?: ")
+    lib = Library(library_name)
 
-lib = Library("Tokyo Library")
+    patron_name = input("What is you name patron?: ")
 
-lib.add_book(book1)
-lib.add_book(book2)
-lib.add_book(book3)
-lib.add_book(book4)
-lib.add_book(book5)
-
-lib.show_books()
-
-lib.check_out(book2, ben)
-
-lib.check_out(book1, maxim)
-lib.check_out(book2, maxim)
-lib.check_out(book3, maxim)
-lib.check_out(book4, maxim)
-lib.check_out(book5, maxim)
-lib.return_book(book3, maxim)
-
-lib.show_books()
-
-maxim.display_books()
-maxim.display_reading_history()
-lib.show_patrons()
-
-"""
+    user_prompt = input(f"""Welcome to the {library_name} Library, {patron_name}!
+    \nHere is everything you can do:\n
+    1. Add a book to the {library_name} library
+    2. Checkout a book
+    3. Return a book 
+    4. Show all the books in the {library_name} Library
+    5. Show all the patrons of the {library_name} Library
+    6. Show the books you have checked out currently
+    7. Show all the books you have checked out
+    
+    """)

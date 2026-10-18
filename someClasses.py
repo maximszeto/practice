@@ -181,5 +181,6 @@ def main():
     5. Show all the patrons of the {library_name} Library
     6. Show the books you have checked out currently
     7. Show all the books you have checked out
+    8. Exit
     
     """)

@@ -21,9 +21,9 @@ class Library:
         self.patrons = []
     
     def show_books(self):
-        print(f"\nBooks in the {self.name}")
+        print(f"\nBooks in the {self.name} Library")
         for book in self.books:
-            print(f"{book} has {book.quantity} copies avaliable")
+            print(f"{book} by {book.author} has {book.quantity} copies avaliable")
 
     def show_patrons(self):
         print("\nPatrons:")
@@ -196,16 +196,22 @@ You are currently using {patron_name}'s account
         if user_prompt == "1":
             os.system("clear")
             user_book_title = input("What is the title of the book that you would like to add to the library?: ")
-            user_book_author = input(f"What is the author of {user_book_title}")
+            user_book_author = input(f"What is the author of {user_book_title}: ")
             book = Book(user_book_title, user_book_author)
             lib.add_book(book)
-            print(f"Successfully added {user_book_title} to the {library_name} Library")
             lib.show_books()
-            time.sleep(5)
+            time.sleep(2.5)
 
         elif user_prompt == "2":
             os.system("clear")
-            pass
+            print("Avaliable books")
+            lib.show_books()
+            user_title_check_out = input("\nWhat is the title of the book would you like to check out?: ")
+            user_author_check_out = input(f"\nWhat is the author of {user_title_check_out}?: ")
+            book_checked_out = Book(user_title_check_out, user_author_check_out)
+            lib.check_out(book_checked_out, patron_user)
+            patron_user.display_books()
+            time.sleep(10)
 
         elif user_prompt == "3":
             os.system("clear")
@@ -228,5 +234,7 @@ You are currently using {patron_name}'s account
         elif user_prompt == "7":
             os.system("clear")
             pass
+
+os.system("clear")
 
 main()

@@ -171,14 +171,17 @@ def main():
     library_name = input("Welcome! What will this library be called?: ")
     lib = Library(library_name)
 
-    patron_name = input("What is you name patron?: ")
+    patron_name = input("What is your name patron?: ")
+    patron_user = Patron(patron_name)
 
     user_prompt = "" 
 
-    while user_prompt != "8":
+    while user_prompt != "9":
         os.system("clear")
         user_prompt = input(f"""Welcome to the {library_name} Library, {patron_name}!
-        \nHere is everything you can do:\n
+You are currently using {patron_name}'s account
+
+        Here is everything you can do:\n
         1. Add a book to the {library_name} library
         2. Checkout a book
         3. Return a book 
@@ -186,7 +189,8 @@ def main():
         5. Show all the patrons of the {library_name} Library
         6. Show the books you have checked out currently
         7. Show all the books you have checked out
-        8. Exit
+        8. Change User
+        9. Exit
         Please use the number to do what you wanna do:  """)
 
         if user_prompt == "1":
@@ -200,52 +204,29 @@ def main():
             time.sleep(5)
 
         elif user_prompt == "2":
+            os.system("clear")
             pass
 
         elif user_prompt == "3":
+            os.system("clear")
             pass
 
         elif user_prompt == "4":
+            os.system("clear")
             pass
 
 
         elif user_prompt == "5":
+            os.system("clear")
             pass
 
         elif user_prompt == "6":
+            os.system("clear")
             pass
 
 
         elif user_prompt == "7":
+            os.system("clear")
             pass
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 main()

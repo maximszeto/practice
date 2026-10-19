@@ -1,4 +1,5 @@
 import os
+import time
 
 os.system("clear")
 
@@ -172,15 +173,79 @@ def main():
 
     patron_name = input("What is you name patron?: ")
 
-    user_prompt = input(f"""Welcome to the {library_name} Library, {patron_name}!
-    \nHere is everything you can do:\n
-    1. Add a book to the {library_name} library
-    2. Checkout a book
-    3. Return a book 
-    4. Show all the books in the {library_name} Library
-    5. Show all the patrons of the {library_name} Library
-    6. Show the books you have checked out currently
-    7. Show all the books you have checked out
-    8. Exit
-    
-    """)
+    user_prompt = "" 
+
+    while user_prompt != "8":
+        os.system("clear")
+        user_prompt = input(f"""Welcome to the {library_name} Library, {patron_name}!
+        \nHere is everything you can do:\n
+        1. Add a book to the {library_name} library
+        2. Checkout a book
+        3. Return a book 
+        4. Show all the books in the {library_name} Library
+        5. Show all the patrons of the {library_name} Library
+        6. Show the books you have checked out currently
+        7. Show all the books you have checked out
+        8. Exit
+        Please use the number to do what you wanna do:  """)
+
+        if user_prompt == "1":
+            os.system("clear")
+            user_book_title = input("What is the title of the book that you would like to add to the library?: ")
+            user_book_author = input(f"What is the author of {user_book_title}")
+            book = Book(user_book_title, user_book_author)
+            lib.add_book(book)
+            print(f"Successfully added {user_book_title} to the {library_name} Library")
+            lib.show_books()
+            time.sleep(5)
+
+        elif user_prompt == "2":
+            pass
+
+        elif user_prompt == "3":
+            pass
+
+        elif user_prompt == "4":
+            pass
+
+
+        elif user_prompt == "5":
+            pass
+
+        elif user_prompt == "6":
+            pass
+
+
+        elif user_prompt == "7":
+            pass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+main()

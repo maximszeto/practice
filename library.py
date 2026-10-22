@@ -110,61 +110,6 @@ class Patron:
             print(f"- {book}")
 
 
-# ==========================================
-# TEST SCRIPT FOR CRITICAL LOGIC & BUG FIXES
-# ==========================================
-
-"""
-# 1. Setup the Library
-lib = Library("Test Library")
-
-# 2. Create books (Notice we are adding TWO copies of "The Hobbit")
-hobbit_copy1 = Book("The Hobbit", "J.R.R. Tolkien")
-hobbit_copy2 = Book("The Hobbit", "J.R.R. Tolkien")
-dune = Book("Dune", "Frank Herbert")
-
-lib.add_book(hobbit_copy1)
-lib.add_book(hobbit_copy2) # Total quantity of "The Hobbit" should now be 2
-lib.add_book(dune)
-
-# 3. Create Patrons
-alice = Patron("Alice")
-bob = Patron("Bob")
-
-print("--- STARTING TESTS ---")
-
-# TEST 1: Multiple copies availability
-print("\n[Test 1] Alice checks out Copy 1 of The Hobbit...")
-lib.check_out(hobbit_copy1, alice) 
-# EXPECTED: Alice successfully checks it out. Remaining quantity of "The Hobbit" is 1.
-
-print("\n[Test 2] Bob tries to check out Copy 2 of The Hobbit...")
-lib.check_out(hobbit_copy2, bob)
-# EXPECTED: Bob should successfully check it out because quantity was 1! 
-# (If your code still relies on a single 'is_checked_out' boolean, this will fail or say it's already out).
-
-print("\n[Test 3] Alice tries to check out Dune (which is available)...")
-lib.check_out(dune, alice)
-# EXPECTED: Alice successfully checks out Dune.
-
-print("\n[Test 4] Bob tries to return a copy of The Hobbit...")
-lib.return_book(hobbit_copy2, bob)
-# EXPECTED: Bob successfully returns it. Quantity of "The Hobbit" goes back to 1.
-# Alice should STILL have her copy checked out.
-
-print("\n--- FINAL STATUS CHECK ---")
-lib.show_books() 
-# EXPECTED: 
-# "The Hobbit has 1 copies available"
-# "Dune has 0 copies available"
-
-alice.display_books()
-# EXPECTED: Should show "The Hobbit" and "Dune"
-
-bob.display_books()
-# EXPECTED: Should be empty (or show nothing) because he returned his book.
-"""
-
 
 def main():
 
@@ -214,6 +159,15 @@ You are currently using {patron_name}'s account
             time.sleep(2.5)
 
         elif user_prompt == "3":
+            os.system("clear")
+            print(f"Here are the books that {patron_name} has checked out")
+            patron_user.display_books()
+            user_return_title = input("\nWhat is the name of the book would you like to return:? ")
+            for the_books in patron_user.borrowed_books:
+                if user_return_title == the_books.title:
+                    lib.return_book(the_books, patron_user)
+                    break
+            time.sleep(2.5)
             os.system("clear")
             pass
 

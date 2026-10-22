@@ -211,13 +211,19 @@ You are currently using {patron_name}'s account
             book_checked_out = Book(user_title_check_out, user_author_check_out)
             lib.check_out(book_checked_out, patron_user)
             patron_user.display_books()
-            time.sleep(10)
+            time.sleep(2.5)
 
         elif user_prompt == "3":
             os.system("clear")
             pass
 
         elif user_prompt == "4":
+            os.system("clear")
+            if lib.books == []:
+                print(f"There are no books in the {library_name} library at this moment")
+            else:
+                lib.show_books()
+            time.sleep(2.5)
             os.system("clear")
             pass
 

@@ -181,16 +181,25 @@ You are currently using {patron_name}'s account
             os.system("clear")
             pass
 
-
+            
+            # show all patrons in the library
         elif user_prompt == "5":
+            os.system("clear")
+            if lib.patrons == []:
+                print("there are no patrons in this library")
+            else:
+                lib.show_patrons()
+            time.sleep(2.5)
             os.system("clear")
             pass
 
+        # 6. Show the books you have checked out currently
         elif user_prompt == "6":
             os.system("clear")
             pass
 
 
+        # 8. Change User
         elif user_prompt == "7":
             os.system("clear")
             pass

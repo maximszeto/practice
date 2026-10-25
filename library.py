@@ -130,6 +130,7 @@ def main():
 
     patron_name = input("What is your name patron?: ")
     patron_user = Patron(patron_name)
+    lib.patrons.append(patron_user)
 
     user_prompt = "" 
 
@@ -214,6 +215,11 @@ You are currently using {patron_name}'s account
         # 7. Add User
         elif user_prompt == "7":
             os.system("clear")
+            new_patron = input("What should this new users name be?: ")
+            patron = Patron(new_patron)
+            lib.patrons.append(patron)
+            lib.show_patrons()
+            time.sleep(2.5)
             pass
 
         # 8. Change User

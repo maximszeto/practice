@@ -110,17 +110,15 @@ class Patron:
         for book in self.reading_history:
             print(f"- {book}")
 
-    def change_patron_account(self, patron):
-        if len(lib.patrons) <= 1:
+    def change_patron_account(self, patron, library):
+        if len(library.patrons) <= 1:
             print("You can not switch into another person's account right now")
             time.sleep(2.5)
-        else:
-            show_patrons()
-            which_patron = input("Which patron account would you like to switch to?: ")
-            for each_patron in lib.patrons:
-                if each_patron == patron:
-                    self.name = patron
-                    return 
+            return None
+        else: 
+            for each_patron in library.patrons:
+                if each_patron.name == patron:
+                    return each_patron
 
 
 def main():
@@ -132,12 +130,13 @@ def main():
     patron_user = Patron(patron_name)
     lib.patrons.append(patron_user)
 
+
     user_prompt = "" 
 
     while user_prompt != "9":
         os.system("clear")
-        user_prompt = input(f"""Welcome to the {library_name} Library, {patron_name}!
-You are currently using {patron_name}'s account
+        user_prompt = input(f"""Welcome to the {library_name} Library, {patron_user.name}!
+You are currently using {patron_user.name}'s account
 
         Here is everything you can do:\n
         1. Add a book to the {library_name} library
@@ -225,7 +224,16 @@ You are currently using {patron_name}'s account
         # 8. Change User
         elif user_prompt == "8":
             os.system("clear")
-            pass
+            lib.show_patrons()
+            print(f"You are currently using {patron_user.name}'s account\n")
+            patron_switch = input("Which patron account would you like to switch to?: ")
+            selected_patron = patron_user.change_patron_account(patron_switch, lib)
+            if selected_patron == None:
+                print("We could not find the user you were trying to switch to")
+                time.sleep(2.5)
+            else:
+                patron_user = selected_patron
+                print(f"You successfully changed to {patron_user.name}'s account")
 
 os.system("clear")
 

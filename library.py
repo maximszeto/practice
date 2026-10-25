@@ -145,8 +145,8 @@ You are currently using {patron_name}'s account
         4. Show all the books in the {library_name} Library
         5. Show all the patrons of the {library_name} Library
         6. Show the books you have checked out currently
-        7. Show all the books you have checked out
-        8. Change User
+        7. Add User
+        8. Change patron account
         9. Exit
         Please use the number to do what you wanna do:  """)
 
@@ -211,8 +211,13 @@ You are currently using {patron_name}'s account
             pass
 
 
-        # 8. Change User
+        # 7. Add User
         elif user_prompt == "7":
+            os.system("clear")
+            pass
+
+        # 8. Change User
+        elif user_prompt == "8":
             os.system("clear")
             pass
 

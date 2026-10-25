@@ -92,6 +92,7 @@ class Library:
             if book.author == author:
                 print(f"{book}") 
 
+        
 
 class Patron:
     def __init__(self, name):
@@ -109,6 +110,17 @@ class Patron:
         for book in self.reading_history:
             print(f"- {book}")
 
+    def change_patron_account(self, patron):
+        if len(lib.patrons) <= 1:
+            print("You can not switch into another person's account right now")
+            time.sleep(2.5)
+        else:
+            show_patrons()
+            which_patron = input("Which patron account would you like to switch to?: ")
+            for each_patron in lib.patrons:
+                if each_patron == patron:
+                    self.name = patron
+                    return 
 
 
 def main():

@@ -208,7 +208,11 @@ You are currently using {patron_user.name}'s account
         # 6. Show the books you have checked out currently
         elif user_prompt == "6":
             os.system("clear")
-            pass
+            print(f"here are all the books {patron_user.name} has checked out")
+            for book in patron_user.borrowed_books:
+                print(f"- {book}")
+                time.sleep(2.5) 
+            
 
 
         # 7. Add User

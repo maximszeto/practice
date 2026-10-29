@@ -241,4 +241,5 @@ You are currently using {patron_user.name}'s account
 
 os.system("clear")
 
-main()
+if __name__ == "__main__":
+    main()

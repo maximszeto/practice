@@ -238,6 +238,7 @@ You are currently using {patron_user.name}'s account
             else:
                 patron_user = selected_patron
                 print(f"You successfully changed to {patron_user.name}'s account")
+                time.sleep(2.5)
 
 os.system("clear")
 
